@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">firstProjectClient</string>
+    <string name="app_name">Theme == null</string>
+    <string name="submit">Send</string>
+    <string name="imgDesc">desc1</string>
+    <string name="hintCars">Model</string>
+    <string name="back">Volver</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+    <color name="blueColor">#0000FF</color>
+    <color name="redColor">#FF0000</color>
+    <string name="changeColor">Cambiar fondo</string>
+    <string name="cambio">Pasar página</string>
 </resources>

@@ -5,11 +5,9 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 const showCars = (req, res) => {
-    var send = req.body.state;
+    var send = req.body.stateq;
     if (send == "ford"){
         res.send({
-            /*"name":"John",
-            "age":30,*/
             "cars": [
             { "name":"Ford", "models":[ "Fiesta", "Focus", "Mustang" ] }/*,
             { "name":"BMW", "models":[ "320", "X3", "X5" ] },
@@ -19,8 +17,6 @@ const showCars = (req, res) => {
         );
     } else if (send == "BMW"){
         res.send({
-            /*"name":"John",
-            "age":30,*/
             "cars": [
             //{ "name":"Ford", "models":[ "Fiesta", "Focus", "Mustang" ] },
             { "name":"BMW", "models":[ "320", "X3", "X5" ] }//,
@@ -48,9 +44,13 @@ const showCars = (req, res) => {
             ]
         }
         );
-    } else {
-        res.send("Prueba valores como \"ford\", \"BMW\", \"fiat\" o \"all\". La key con \"state\"")
-    }
+    } else if (send == "obj"){
+            res.send({"name":"John"});
+        } else {
+            console.log("bugabuga    ");
+            res.send({"name":"muerto"})
+            //res.send("Prueba valores como \"ford\", \"BMW\", \"fiat\" o \"all\". Object con \"obj\". Case sensitive. La key con \"state\"")
+        }
     /*if (req.body != "state"){
         res.send("Detectado una key distinta a \"state\"");
     }*/
@@ -62,5 +62,5 @@ app.get("/cars", showCars);
 const port = 40000;
 
 app.listen(port, () => {
-    console.log("Running server on port:" + port);
+    console.log("Running server on port: " + port);
 });
