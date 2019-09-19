@@ -34,21 +34,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestToServer(){
-        val queue = Volley.newRequestQueue(this)
 
-        val inCar = editText.text.toString()
-        val url = "http://192.168.103.63:40000/cars?state=$inCar"
+        val inCar = editText.text.toString().toLowerCase()
 
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            Response.Listener { response ->
-                textView.text = "Response: %s".format(response.toString())
-            },
-            Response.ErrorListener { error ->
-                // TODO: Handle error
-            }
-        )
+        if(inCar == "ford" || inCar == "all" || inCar == "bmw" || inCar == "obj" || inCar == "fiat"){
 
-        queue.add(jsonObjectRequest)
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.103.63:40000/cars?stateq=$inCar"
+
+            val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.GET, url, null,
+                Response.Listener { response ->
+                    textView.text = "Response: %s".format(response.toString())
+                },
+                Response.ErrorListener { error ->
+                    // TODO: Handle error
+                }
+            )
+
+            queue.add(jsonObjectRequest)
+
+        } else {
+            textView.text = "Prueba con: BMW, Fiat, Ford, obj o all"
+        }
     }
 }

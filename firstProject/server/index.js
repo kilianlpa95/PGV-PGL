@@ -5,7 +5,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 const showCars = (req, res) => {
-    var send = req.body.stateq;
+    var send = req.query.stateq;
     if (send == "ford"){
         res.send({
             "cars": [
@@ -15,7 +15,7 @@ const showCars = (req, res) => {
             ]
         }
         );
-    } else if (send == "BMW"){
+    } else if (send == "bmw"){
         res.send({
             "cars": [
             //{ "name":"Ford", "models":[ "Fiesta", "Focus", "Mustang" ] },
@@ -47,7 +47,7 @@ const showCars = (req, res) => {
     } else if (send == "obj"){
             res.send({"name":"John"});
         } else {
-            console.log("bugabuga    ");
+            //console.log("bugabuga    ");
             res.send({"name":"muerto"})
             //res.send("Prueba valores como \"ford\", \"BMW\", \"fiat\" o \"all\". Object con \"obj\". Case sensitive. La key con \"state\"")
         }
