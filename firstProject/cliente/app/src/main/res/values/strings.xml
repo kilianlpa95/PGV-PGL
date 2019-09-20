@@ -10,4 +10,5 @@
     <color name="redColor">#FF0000</color>
     <string name="changeColor">Cambiar fondo</string>
     <string name="cambio">Pasar página</string>
+    <string name="errorVal">Test with \"Ford\", \"Fiat\" or something to get extra hints. Can´t be empty.</string>
 </resources>

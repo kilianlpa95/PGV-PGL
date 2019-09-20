@@ -9,7 +9,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.StrictMode
-
+import android.text.TextUtils
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,9 +35,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestToServer(){
 
+        editText.error = null
         val inCar = editText.text.toString().toLowerCase()
 
-        if(inCar == "ford" || inCar == "all" || inCar == "bmw" || inCar == "obj" || inCar == "fiat"){
+        if(TextUtils.isEmpty(inCar)){
+
+            editText.error = getString(R.string.errorVal)
+            editText.requestFocus()
+            return
+
+        } else if(inCar == "ford" || inCar == "all" || inCar == "bmw" || inCar == "obj" || inCar == "fiat"){
 
             val queue = Volley.newRequestQueue(this)
             val url = "http://192.168.103.63:40000/cars?stateq=$inCar"
@@ -54,8 +61,8 @@ class MainActivity : AppCompatActivity() {
 
             queue.add(jsonObjectRequest)
 
-        } else {
-            textView.text = "Prueba con: BMW, Fiat, Ford, obj o all"
-        }
+            } else {
+                textView.text = "Prueba con: BMW, Fiat, Ford, obj o all"
+            }
     }
 }
